@@ -1,0 +1,25 @@
+[
+  {
+    "name": "book",
+    "price": 12.49,
+    "quantity": 1,
+    "category": "book",
+    "taxExemption": true,
+    "imported": false
+  },
+  {
+    "name": "music CD",
+    "price": 14.99,
+    "quantity": 1,
+    "category": "music",
+    "taxExemption": false,
+    "imported": false
+  },
+  {
+    "name": "chocolate bar",
+    "price": 0.85,
+    "quantity": 1,
+    "taxExemption": true,
+    "imported": false
+  }
+]

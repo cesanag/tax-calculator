@@ -1,0 +1,16 @@
+[
+  {
+    "name": "imported box of chocolates",
+    "price": 10.00,
+    "quantity": 1,
+    "taxExemption": true,
+    "imported": true
+  },
+  {
+    "name": "imported bottle of perfume",
+    "price": 47.5,
+    "quantity": 1,
+    "taxExemption": false,
+    "imported": true
+  }
+]
