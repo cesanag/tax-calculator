@@ -1,4 +1,4 @@
-## To run in terminal (the result is printed to a node process):
+# To run in terminal (the result is printed to a node process):
 'npm run start'
 
 # To run tests: 
