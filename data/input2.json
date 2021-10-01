@@ -1,16 +1,16 @@
 [
   {
     "type": "imported box of chocolates",
-    "price": 10.00,
+    "price": 10.0,
     "quantity": 1,
     "category": "food",
-    "imported": true
+    "countryOfOrigin": "uk"
   },
   {
     "type": "imported bottle of perfume",
     "price": 47.5,
     "quantity": 1,
     "category": "perfume",
-    "imported": true
+    "countryOfOrigin": "france"
   }
 ]

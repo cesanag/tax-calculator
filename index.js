@@ -4,10 +4,11 @@ const input3 = require("./data/input3.json");
 
 const printReceipt = require("./printReceipt.js");
 
-const print = () => {
-  printReceipt.printTaxedProducts(1, input1);
-  printReceipt.printTaxedProducts(2, input2);
-  printReceipt.printTaxedProducts(3, input3);
-};
+function demoPrint(number, input) {
+  console.log(`Output ${number}:`);
+  printReceipt.printTaxedProducts(input);
+}
 
-print();
+demoPrint(1, input1);
+demoPrint(2, input2);
+demoPrint(3, input3);

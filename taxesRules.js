@@ -21,10 +21,8 @@ module.exports = {
 
   /* Rounding up to 0.05 */
   roundUpPrice: (priceBeforeRounding) => {
-    const roundingFactor = 0.05;
     if (typeof priceBeforeRounding === "number" && priceBeforeRounding > 0) {
-      const result =
-        Math.round(priceBeforeRounding / roundingFactor) * roundingFactor;
+      const result = Math.ceil(priceBeforeRounding * 20) / 20;
       return result;
     }
     return null;
@@ -40,8 +38,8 @@ module.exports = {
   },
 
   /* Check if product is imported */
-  checkIfImportTaxApplies: (productImported) => {
-    if (productImported) {
+  checkIfImportTaxApplies: (countryOfOrigin) => {
+    if (countryOfOrigin !== "italy") {
       return true;
     }
     return false;

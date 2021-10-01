@@ -18,7 +18,7 @@ describe("Import tax", () => {
 });
 
 describe("Round up the product price", () => {
-  it("rounds up the product price to 0.05", () => {
+  it("rounds up the product price by 0.05", () => {
     expect(taxes.roundUpPrice(26.58)).toEqual(26.6);
     expect(taxes.roundUpPrice(467.7423)).toEqual(467.75);
     expect(taxes.roundUpPrice(0.042834923477234)).toEqual(0.05);
@@ -26,14 +26,21 @@ describe("Round up the product price", () => {
 });
 
 describe("Check if sales tax applies", () => {
-  it("returns false if category is 1)book, 2)food or 3)medical", () => {
-    expect(taxes.checkIfSalesTaxExemptionApplies("book")).toEqual(false);
-    expect(taxes.checkIfSalesTaxExemptionApplies("food")).toEqual(false);
-  });
-  it("returns true if category is NOT 1)book, 2)food or 3)medical", () => {
+  it("returns true if category is not a book, food or medical", () => {
     expect(taxes.checkIfSalesTaxExemptionApplies("music")).toEqual(true);
     expect(taxes.checkIfSalesTaxExemptionApplies("test category")).toEqual(
       true
     );
+  });
+  it("returns false if category is book, food or medical", () => {
+    expect(taxes.checkIfSalesTaxExemptionApplies("book")).toEqual(false);
+    expect(taxes.checkIfSalesTaxExemptionApplies("food")).toEqual(false);
+  });
+});
+
+describe("Check if import tax applies", () => {
+  it("returns true if country of origin is not Italy", () => {
+    expect(taxes.checkIfImportTaxApplies("italy")).toEqual(false);
+    expect(taxes.checkIfImportTaxApplies("not italy")).toEqual(true);
   });
 });

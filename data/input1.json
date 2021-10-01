@@ -4,20 +4,20 @@
     "price": 12.49,
     "quantity": 1,
     "category": "book",
-    "imported": false
+    "countryOfOrigin": "italy"
   },
   {
     "type": "music CD",
     "price": 14.99,
     "quantity": 1,
     "category": "music",
-    "imported": false
+    "countryOfOrigin": "italy"
   },
   {
     "type": "chocolate bar",
     "price": 0.85,
     "quantity": 1,
     "category": "food",
-    "imported": false
+    "countryOfOrigin": "italy"
   }
 ]

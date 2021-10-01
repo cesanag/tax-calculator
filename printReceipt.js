@@ -1,17 +1,13 @@
 const taxes = require("./taxesRules.js");
+fs = require("fs");
 
 module.exports = {
-  printTaxedProducts: (inputNumber, input) => {
-    // Calculates the shopping list total price
-    const totalBeforeTaxes = input
-      .map((item) => item.price)
-      .reduce((acc, item) => acc + item);
-
+  printTaxedProducts: (input) => {
     /* Check if taxes applies*/
     const productTaxes = input.map((item) => {
       if (
         taxes.checkIfSalesTaxExemptionApplies(item.category) &&
-        taxes.checkIfImportTaxApplies(item.imported)
+        taxes.checkIfImportTaxApplies(item.countryOfOrigin)
       ) {
         return (
           taxes.roundUpPrice(taxes.calculateSalesTax(item.price)) +
@@ -19,7 +15,7 @@ module.exports = {
         );
       } else if (taxes.checkIfSalesTaxExemptionApplies(item.category)) {
         return taxes.roundUpPrice(taxes.calculateSalesTax(item.price));
-      } else if (taxes.checkIfImportTaxApplies(item.imported)) {
+      } else if (taxes.checkIfImportTaxApplies(item.countryOfOrigin)) {
         return taxes.roundUpPrice(taxes.calculateImportTax(item.price));
       }
       return 0;
@@ -29,17 +25,20 @@ module.exports = {
     const totalTaxes = productTaxes.reduce((acc, item) => acc + item);
 
     /* Prints the shopping list */
-    process.stdout.write(`Output ${inputNumber}: \n`);
     for (i = 0; i < input.length; i++)
-      process.stdout.write(
+      console.log(
         `${input[i].quantity} ${input[i].type} at ${(
           input[i].price + taxes.roundUpPrice(productTaxes[i])
-        ).toFixed(2)}\n`
+        ).toFixed(2)}`
       );
 
+    // Calculates the shopping list total price
+    const totalBeforeTaxes = input
+      .map((item) => item.price)
+      .reduce((acc, item) => acc + item);
+
     /* Prints the total costs plus taxes */
-    const totalAfterTaxes = totalBeforeTaxes + totalTaxes;
-    process.stdout.write(`Sales Taxes: ${totalTaxes.toFixed(2)}\n`);
-    process.stdout.write(`Total: ${totalAfterTaxes.toFixed(2)}\n\n`);
+    console.log(`Sales Taxes: ${totalTaxes.toFixed(2)}`);
+    console.log(`Total: ${(totalBeforeTaxes + totalTaxes).toFixed(2)}\n`);
   },
 };

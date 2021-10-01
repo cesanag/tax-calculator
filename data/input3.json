@@ -4,27 +4,27 @@
     "price": 27.99,
     "quantity": 1,
     "category": "perfume",
-    "imported": true
+    "countryOfOrigin": "brazil"
   },
   {
     "type": "bottle of perfume",
     "price": 18.99,
     "quantity": 1,
     "category": "perfume",
-    "imported": false
+    "countryOfOrigin": "italy"
   },
   {
     "type": "packet of headache pills",
     "price": 9.75,
     "quantity": 1,
     "category": "medical",
-    "imported": false
+    "countryOfOrigin": "italy"
   },
   {
     "type": "box of imported chocolates",
     "price": 11.25,
     "quantity": 1,
     "category": "food",
-    "imported": true
+    "countryOfOrigin": "china"
   }
 ]
