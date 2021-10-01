@@ -1,16 +1,16 @@
 [
   {
-    "name": "imported box of chocolates",
+    "type": "imported box of chocolates",
     "price": 10.00,
     "quantity": 1,
-    "taxExemption": true,
+    "category": "food",
     "imported": true
   },
   {
-    "name": "imported bottle of perfume",
+    "type": "imported bottle of perfume",
     "price": 47.5,
     "quantity": 1,
-    "taxExemption": false,
+    "category": "perfume",
     "imported": true
   }
 ]

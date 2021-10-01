@@ -7,20 +7,22 @@ module.exports = {
       .map((item) => item.price)
       .reduce((acc, item) => acc + item);
 
-    /* Calculates the product tax conditionally by 'imported' && 'taxExemption' values*/
+    /* Check if taxes applies*/
     const productTaxes = input.map((item) => {
-      if (!item.taxExemption && item.imported) {
+      if (
+        taxes.checkIfSalesTaxExemptionApplies(item.category) &&
+        taxes.checkIfImportTaxApplies(item.imported)
+      ) {
         return (
-          taxes.calculateSalesTax(item.price) +
-          taxes.calculateImportTax(item.price)
+          taxes.roundUpPrice(taxes.calculateSalesTax(item.price)) +
+          taxes.roundUpPrice(taxes.calculateImportTax(item.price))
         );
-      } else if (!item.taxExemption) {
-        return taxes.calculateSalesTax(item.price);
-      } else if (item.imported) {
-        return taxes.calculateImportTax(item.price);
-      } else {
-        return 0;
+      } else if (taxes.checkIfSalesTaxExemptionApplies(item.category)) {
+        return taxes.roundUpPrice(taxes.calculateSalesTax(item.price));
+      } else if (taxes.checkIfImportTaxApplies(item.imported)) {
+        return taxes.roundUpPrice(taxes.calculateImportTax(item.price));
       }
+      return 0;
     });
 
     /* Calculates the total taxes */
@@ -30,12 +32,12 @@ module.exports = {
     process.stdout.write(`Output ${inputNumber}: \n`);
     for (i = 0; i < input.length; i++)
       process.stdout.write(
-        `${input[i].quantity} ${input[i].name} at ${(
-          input[i].price + productTaxes[i]
+        `${input[i].quantity} ${input[i].type} at ${(
+          input[i].price + taxes.roundUpPrice(productTaxes[i])
         ).toFixed(2)}\n`
       );
 
-    /* Prints total costs plus taxes */
+    /* Prints the total costs plus taxes */
     const totalAfterTaxes = totalBeforeTaxes + totalTaxes;
     process.stdout.write(`Sales Taxes: ${totalTaxes.toFixed(2)}\n`);
     process.stdout.write(`Total: ${totalAfterTaxes.toFixed(2)}\n\n`);
