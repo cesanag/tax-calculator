@@ -1,13 +1,13 @@
 # To run in terminal :
-'npm run start'
+`npm run start`
 
 The result will be printed to a node process.
 
 # To run tests: 
-'npm run test'
+`npm run test`
 
 
-PROBLEM: SALES TAXES
+# PROBLEM: SALES TAXES
 
 Basic sales tax is applicable at a rate of 10% on all goods, except books, food, and medical products that are exempt. Import duty is an additional sales tax applicable on all imported goods at a rate of 5%, with no exemptions.
 
